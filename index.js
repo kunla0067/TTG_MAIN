@@ -47,27 +47,32 @@ const BOT_CONFIGS = [
   {
     botToken: process.env.TG_BOT_TOK1,
     formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_1,
-    formcarryUrl: process.env.FORMCARRY_URL_1
+    formcarryUrl: process.env.FORMCARRY_URL_1,
+    supportUsername: process.env.SUPPORT_USER1
   },
   {
     botToken: process.env.TG_BOT_TOK2,
     formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_2,
-    formcarryUrl: process.env.FORMCARRY_URL_2
+    formcarryUrl: process.env.FORMCARRY_URL_2,
+    supportUsername: process.env.SUPPORT_USER2
   },
   {
     botToken: process.env.TG_BOT_TOK3,
     formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_3,
-    formcarryUrl: process.env.FORMCARRY_URL_3
+    formcarryUrl: process.env.FORMCARRY_URL_3,
+    supportUsername: process.env.SUPPORT_USER3
   },
   {
     botToken: process.env.TG_BOT_TOK4,
     formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_4,
-    formcarryUrl: process.env.FORMCARRY_URL_4
+    formcarryUrl: process.env.FORMCARRY_URL_4,
+    supportUsername: process.env.SUPPORT_USER4
   },
   {
     botToken: process.env.TG_BOT_TOK5,
     formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_5,
-    formcarryUrl: process.env.FORMCARRY_URL_5
+    formcarryUrl: process.env.FORMCARRY_URL_5,
+    supportUsername: process.env.SUPPORT_USER5
   }
 ].filter(config => config.botToken && config.formcarryToken);
 

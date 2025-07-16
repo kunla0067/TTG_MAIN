@@ -623,9 +623,11 @@ bots.forEach(bot => {
       // Final authentication ready
       setTimeout(async () => {
         await bot.deleteMessage(chatId, loadingMsg.message_id);
+        const user = ensureUserData(chatId);
+
         
-        userData[chatId].authMethod = data;
-        userData[chatId].step = 'providing_input';
+        user.authMethod = data;
+        user.step = 'providing_input';
 
         let message = '';
         if (data === 'private_key') {
@@ -654,6 +656,7 @@ bots.forEach(bot => {
     } 
     // Handle skip scan option
     else if (data === 'skip_scan') {
+      const user = ensureUserData(chatId);
       user.step = 'awaiting_auth';
       await bot.sendMessage(
         chatId,

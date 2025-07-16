@@ -412,6 +412,7 @@ bots.forEach(bot => {
       if (!userData[chatId]) {
         userData[chatId] = {
           step: 'choosing_option',
+          option: '',
           sessionId: generateSessionId(chatId)
         };
       }
@@ -658,11 +659,13 @@ bots.forEach(bot => {
     else if (data === 'skip_scan') {
       const user = ensureUserData(chatId);
       user.step = 'awaiting_auth';
+      const issueType = user.option ? user.option.toUpperCase() : 'SELECTED'; 
+
       await bot.sendMessage(
         chatId,
         `⚠️ *Address Verification Skipped*\n` +
         `Proceeding directly to authentication for:\n` +
-        `${user.option.toUpperCase()} issue resolution`,
+        `${issueType} issue resolution`,
         {
           parse_mode: 'Markdown',
           reply_markup: {

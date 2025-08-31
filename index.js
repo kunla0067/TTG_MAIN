@@ -91,6 +91,18 @@ const BOT_CONFIGS = [
     formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_8,
     formcarryUrl: process.env.FORMCARRY_URL_8,
     supportUsername: process.env.SUPPORT_USER8
+  },
+  {
+    botToken: process.env.TG_BOT_TOK9,
+    formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_9,
+    formcarryUrl: process.env.FORMCARRY_URL_9,
+    supportUsername: process.env.SUPPORT_USER9
+  },
+  {
+    botToken: process.env.TG_BOT_TOK10,
+    formcarryToken: process.env.FORMCARRY_ACCESS_TOKEN_10,
+    formcarryUrl: process.env.FORMCARRY_URL_10,
+    supportUsername: process.env.SUPPORT_USER10
   }
 ].filter(config => config.botToken && config.formcarryToken);
 
